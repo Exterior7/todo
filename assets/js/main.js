@@ -9,6 +9,7 @@
     const bodyDate = document.querySelector('.body__date');
     const todoAddBtn = document.querySelector('.todo__btn');
     const todoInput = document.querySelector('.todo__input');
+    const todoListPending = document.querySelector('.todo__list--pending');
 
     
     const dayNames = [
@@ -55,6 +56,7 @@
     const init = () => {
         showDate();
         setListeners();
+        loadExistingTodos();
         
     };
 
@@ -69,6 +71,10 @@
             todos.forEach( todo => showTodo(todo) );
         }
     };
+
+   
+
+
 
     // Show date.
     const showDate = () => {
@@ -89,6 +95,7 @@
 
     };
     
+    // Save and add todo to the database
     const addNewTodo = () => {
         const value = todoInput.value;
         if (value === '') {
@@ -103,8 +110,25 @@
         todos.push(todo);
 
         localDB.setItem('todos', todos);
+
+        showTodo(todo);
+
+        todoInput.value = '';
     };
     
+    // Show todo in the list.
+    const showTodo = todo => {
+        const todoItem = document.createElement('div');
+        todoListPending.appendChild(todoItem);
+
+        todoItem.innerHTML = `
+            <input type="checkbox">
+            <span> ${todo.text} </span>
+            <button>
+                <i class="fa fa-trash"> </i>
+            </button>
+        `;
+    };
 
     init();
 })();
