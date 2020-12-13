@@ -7,8 +7,8 @@
     // Parts of date.
     const bodyDay = document.querySelector('.body__day');
     const bodyDate = document.querySelector('.body__date');
-
-
+    const todoAddBtn = document.querySelector('.todo__btn');
+    const todoInput = document.querySelector('.todo__input');
 
     
     const dayNames = [
@@ -55,7 +55,7 @@
     const init = () => {
         showDate();
         setListeners();
-        loadExistingTodos();
+        
     };
 
     // Load existing todos.
@@ -83,8 +83,27 @@
         bodyDate.textContent = day.join('-');
     };
 
+    //Set event listener.
+    const setListeners = () => {
+        todoAddBtn.addEventListener('click',addNewTodo );
+
+    };
     
-    
+    const addNewTodo = () => {
+        const value = todoInput.value;
+        if (value === '') {
+            alert('Please type todo.');
+            return;
+        }
+        const todo = {
+           text: value, 
+           done: false 
+        };
+
+        todos.push(todo);
+
+        localDB.setItem('todos', todos);
+    };
     
 
     init();
