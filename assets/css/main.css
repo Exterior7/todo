@@ -13,3 +13,14 @@ body {
     padding: 2rem;
 }
 
+.todo__btn {
+    color: rgb(255, 255, 255);
+    background-color: rgba(230, 230, 230, 1);
+    border: none;
+    border-radius: 10%;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+
+.todo__btn:hover {
+    background-color: rgb(97, 20, 88);
+}
