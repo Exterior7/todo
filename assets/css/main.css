@@ -22,5 +22,6 @@ body {
 }
 
 .todo__btn:hover {
+    transition: 0.5s;
     background-color: rgb(97, 20, 88);
 }
