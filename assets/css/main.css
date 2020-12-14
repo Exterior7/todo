@@ -25,3 +25,8 @@ body {
     transition: 0.5s;
     background-color: rgb(97, 20, 88);
 }
+
+h3 {
+    font-family: 'Courier New', Courier, monospace;
+    color: red;
+}
